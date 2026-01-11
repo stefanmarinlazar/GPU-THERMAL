@@ -1,0 +1,20 @@
+[Unit]
+# put this in /systemctl/system/gpu-thermal-service update the paths and then run systemctl daemon-reload and 
+# and systemctl start gpu-thermal-service 
+Description=GPU Thermal Management (NVML Headless)
+# We wait for the driver to load, but NOT the GUI
+After=nvidia-persistenced.service
+Wants=nvidia-persistenced.service
+
+[Service]
+Type=simple
+# Clean up: No more DISPLAY or XAUTHORITY environment variables needed!
+Restart=always
+RestartSec=10
+# Run the bash script that now calls your fan.py
+ExecStart=/usr/local/bin/gpu-thermal-daemon.sh
+User=root
+
+[Install]
+# Start as soon as the system is ready for multi-user/server mode
+WantedBy=multi-user.target
