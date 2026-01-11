@@ -1,5 +1,5 @@
 This script is designed for nvidia rtx carrds to ofer a more advanced gpu thermal control on linux system
-it is using a python script and nvml
+it is build using a python script and nvml
 Scope is change the speed of the fans proportional to gpu temp and after fans are at 100 throthle down the power available to  tyhe card   
 It can be instaled as a service with  systemctl( i provided the unit file for easy configuration)
 It is build using gemini and tested as a service on my system 
